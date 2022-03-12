@@ -3,9 +3,18 @@ class SessionsController < ApplicationController
   end
 
   def create
+    @user = User.where({ email: params["email"] })[0]
+    if @user
+        if @user.password == params["password"]
+            flash[:notice] = "You logged in!"
+           redirect_to "/places"
+        else
+            flash[:notice] = "Wrong Password or Username"
+            redirect_to "/sessions/new"
+        end
+    else   
+        redirect_to "/sessions/new"
+    end 
   end
 
-  def destroy
-  end
-end
-  
+end 
