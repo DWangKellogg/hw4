@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.where({ email: params["email"] })[0]
     if @user
         if @user.password == params["password"]
-            flash[:notice] = "You logged in!"
+            flash[:notice] = "Welcome, you are logged in!"
            redirect_to "/places"
         else
             flash[:notice] = "Wrong Password or Username"
