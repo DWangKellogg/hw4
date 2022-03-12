@@ -10,16 +10,14 @@
   </head>
 
   <body>
-    <% @current_user = User.find(session["user_id"]) %>
-    
-      <% if @current_user %>
-       Welcome, <%= @current_user.username %>
-        <%= button_to "Logout", "/sessions/logout", method: :delete %>
-      <% else %>
     <div>
       <a href="/">Home</a>
-      |
       <%#= button_to "Logout", "/sessions/logout", method: :delete %>
+      <p>
+      <% if @current_user %>
+        Logged in as: <%= @current_user.username %>
+        <%= button_to "Logout", "/sessions/logout", method: :delete %>
+      <% else %>
       <a href="/sessions/new">Login</a>
       | 
       <a href="/users/new">Signup</a>
