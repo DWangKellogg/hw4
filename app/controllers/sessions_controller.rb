@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.where({ email: params["email"] })[0]
     if @user
-        if @user.password == params["password"]
+        if BCrypt::Password.new(@user.password) == params["password"]
             flash[:notice] = "Welcome, you are logged in!"
            redirect_to "/places"
         else
