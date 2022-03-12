@@ -6,7 +6,8 @@ class SessionsController < ApplicationController
     @user = User.where({ email: params["email"] })[0]
     if @user
         if BCrypt::Password.new(@user.password) == params["password"]
-            flash[:notice] = "Welcome, you are logged in!"
+           session["user_id"] = @user.id 
+          flash[:notice] = "Welcome, you are logged in!"
            redirect_to "/places"
         else
             flash[:notice] = "Wrong Password or Username"
