@@ -11,6 +11,7 @@
     <%= form.label "description", class: "form-label" %>
     <%= form.text_field "description", class: "form-control" %>
   </p>
+  </div>
 
   <div class="mb-3">
   <%= form.label "uploaded_image", class: "form-label" %>
@@ -22,7 +23,7 @@
     <%= form.date_field "posted_on" %>
   </p>
   <p>
-    <%= form.submit, class: "btn btn-primary" %>
+    <%= form.submit "Create Post", class: "btn btn-primary" %>
   </p>
   <%= form.hidden_field "place_id" %>
 <% end %>
